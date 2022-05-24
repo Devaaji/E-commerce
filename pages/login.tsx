@@ -15,6 +15,8 @@ import {
   InputRightElement,
   IconButton,
   useDisclosure,
+  useBoolean,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import MainLayout from '../components/layout';
@@ -24,16 +26,74 @@ import { ImFacebook } from 'react-icons/im';
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { NextSeo } from 'next-seo';
 import LayoutImageAuth from '../components/layoutimage';
+import useNoAuth from '../hooks/useNoAuth';
+import useUserStore from '../store/useUserStore';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { LoginFormValues } from '../ts/types/schema/authenticationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '../utils/schema/authenticationSchema';
+import useAxios from '../hooks/useAxios';
+import { LoginSuccessResponse } from '../ts/types/Authentication';
+import { useRouter } from 'next/router';
+import useToastNetworkError from '../hooks/useToastNetworkError';
 
 const LoginPage = () => {
+  useNoAuth();
   const { isOpen: isPasswordOpen, onToggle: onPasswordToggle } =
     useDisclosure();
+
+  const router = useRouter();
+  const showToastNetworkError = useToastNetworkError();
+
+  const [isLoading, setIsLoading] = useBoolean();
+
+  const setLogin = useUserStore((state) => state.setLogin);
+
+  const { register, handleSubmit, formState, setError } =
+    useForm<LoginFormValues>({
+      resolver: yupResolver(loginSchema),
+    });
+
+  const [, makeLogin] = useAxios<LoginSuccessResponse>(
+    { url: '/auth/login', method: 'POST' },
+    { manual: true }
+  );
+
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
+    setIsLoading.on();
+
+    makeLogin({ data })
+      .then((response) => {
+        const { data: responseData } = response.data;
+
+        setLogin(responseData.email, responseData.token);
+        router.push('/');
+      })
+      .catch((error) => {
+        setIsLoading.off();
+
+        if (error.response.status === 404) {
+          setError('email', { message: 'Email atau password salah' });
+          setError('password', { message: 'Email atau password salah' });
+        } else showToastNetworkError();
+      });
+  };
+
   return (
     <MainLayout>
       <NextSeo title="Login" titleTemplate="%s | E-Commerce" />
       <Flex minH={'80vh'} align={'center'} justify={'center'}>
         <LayoutImageAuth />
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack
+          as="form"
+          spacing={8}
+          mx={'auto'}
+          maxW={'lg'}
+          py={12}
+          px={6}
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <Box
             w="400px"
             bg={useColorModeValue('white', 'gray.700')}
@@ -46,14 +106,27 @@ const LoginPage = () => {
                   Masuk
                 </Text>
               </Box>
-              <FormControl id="email">
+              <FormControl id="email" isInvalid={!!formState.errors?.email}>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" />
+                <Input
+                  type="email"
+                  placeholder="user@email.com"
+                  {...register('email')}
+                />
+                <FormErrorMessage fontSize="xs">
+                  {formState.errors?.email?.message}
+                </FormErrorMessage>
               </FormControl>
-              <FormControl id="password">
+              <FormControl
+                id="password"
+                isInvalid={!!formState.errors?.password}
+              >
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={isPasswordOpen ? 'text' : 'password'} />
+                  <Input
+                    type={isPasswordOpen ? 'text' : 'password'}
+                    {...register('password')}
+                  />
                   <InputRightElement>
                     <IconButton
                       bg="transparent"
@@ -73,11 +146,16 @@ const LoginPage = () => {
                     />
                   </InputRightElement>
                 </InputGroup>
+                <FormErrorMessage fontSize="xs">
+                  {formState.errors?.password?.message}
+                </FormErrorMessage>
               </FormControl>
               <Stack spacing={2}>
                 <Button
                   bg={'e-second'}
                   color={'white'}
+                  type="submit"
+                  isLoading={isLoading}
                   _hover={{
                     bg: 'hover-second',
                   }}
