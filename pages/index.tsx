@@ -1,10 +1,14 @@
 import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 import MainBannerCarousel from '../components/bannercarousel';
 import MainLayout from '../components/layout';
-import { NextSeo } from 'next-seo';
 import MainRecomendation from '../components/MainRecomendation';
+import useRemoteUserProfile from '../hooks/remote/useRemoteUserProfile';
 
 const Home: NextPage = () => {
+  const { data } = useRemoteUserProfile();
+
+  console.log('Data: ', data);
   return (
     <>
       <NextSeo

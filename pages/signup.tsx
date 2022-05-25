@@ -20,8 +20,6 @@ import {
   Circle,
   useToast,
 } from '@chakra-ui/react';
-import React from 'react';
-import MainLayout from '../components/layout';
 import { NextSeo } from 'next-seo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import NextLink from 'next/link';
@@ -32,15 +30,14 @@ import {
   BsFillEyeFill,
   BsFillEyeSlashFill,
 } from 'react-icons/bs';
+import { useForm, SubmitHandler, useFormState } from 'react-hook-form';
 import LayoutImageAuth from '../components/layoutimage';
 import useNoAuth from '../hooks/useNoAuth';
 import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
-import { useForm, SubmitHandler, useFormState } from 'react-hook-form';
 import { SignUpFormValues } from '../ts/types/schema/authenticationSchema';
 import { signUpSchema } from '../utils/schema/authenticationSchema';
 import useAxios from '../hooks/useAxios';
-import { useRouter } from 'next/router';
-import { FiChevronLeft } from 'react-icons/fi';
+import MainLayout from '../components/layout';
 
 const SignUpPage: NextPageWithLayout = () => {
   useNoAuth();
@@ -50,12 +47,10 @@ const SignUpPage: NextPageWithLayout = () => {
   const { isOpen: isPasswordOpen, onToggle: onPasswordToggle } =
     useDisclosure();
   const [isRegisterSuccess, setIsRegisterSuccess] = useBoolean();
-  const router = useRouter();
 
-  const { register, setError, handleSubmit, control } =
-    useForm<SignUpFormValues>({
-      resolver: yupResolver(signUpSchema),
-    });
+  const { register, handleSubmit, control } = useForm<SignUpFormValues>({
+    resolver: yupResolver(signUpSchema),
+  });
 
   const { errors } = useFormState({ control });
 

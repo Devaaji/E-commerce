@@ -18,23 +18,22 @@ import {
   useBoolean,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import MainLayout from '../components/layout';
 import NextLink from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { ImFacebook } from 'react-icons/im';
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { NextSeo } from 'next-seo';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/router';
+import MainLayout from '../components/layout';
 import LayoutImageAuth from '../components/layoutimage';
 import useNoAuth from '../hooks/useNoAuth';
 import useUserStore from '../store/useUserStore';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { LoginFormValues } from '../ts/types/schema/authenticationSchema';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../utils/schema/authenticationSchema';
 import useAxios from '../hooks/useAxios';
 import { LoginSuccessResponse } from '../ts/types/Authentication';
-import { useRouter } from 'next/router';
 import useToastNetworkError from '../hooks/useToastNetworkError';
 
 const LoginPage = () => {
