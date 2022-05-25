@@ -4,7 +4,7 @@ type LoginSuccessResponseData = {
   message: string;
   email: string;
   token: string;
-}
+};
 
 type RegisterErrorResponseMessageField = {
   username?: string;
