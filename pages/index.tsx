@@ -6,9 +6,10 @@ import MainRecomendation from '../components/MainRecomendation';
 import useRemoteUserProfile from '../hooks/remote/useRemoteUserProfile';
 
 const Home: NextPage = () => {
+
   const { data } = useRemoteUserProfile();
 
-  console.log('Data: ', data);
+  console.log('Data:', data);
   return (
     <>
       <NextSeo

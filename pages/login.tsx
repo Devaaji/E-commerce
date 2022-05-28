@@ -35,6 +35,7 @@ import { loginSchema } from '../utils/schema/authenticationSchema';
 import useAxios from '../hooks/useAxios';
 import { LoginSuccessResponse } from '../ts/types/Authentication';
 import useToastNetworkError from '../hooks/useToastNetworkError';
+import { useSWRConfig } from 'swr';
 
 const LoginPage = () => {
   useNoAuth();
@@ -42,6 +43,7 @@ const LoginPage = () => {
     useDisclosure();
 
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const showToastNetworkError = useToastNetworkError();
 
   const [isLoading, setIsLoading] = useBoolean();
@@ -66,6 +68,7 @@ const LoginPage = () => {
         const { data: responseData } = response.data;
 
         setLogin(responseData.email, responseData.token);
+        mutate(`/auth/me?email=${data.email}`);
         router.push('/');
       })
       .catch((error) => {

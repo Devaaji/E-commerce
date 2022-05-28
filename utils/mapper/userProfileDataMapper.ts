@@ -7,12 +7,11 @@ type UserProfileDataMapperType = {
 
 const userProfileDataMapper: UserProfileDataMapperType = {
   toLocal: (userProfile) => ({
-    id: userProfile.id_user,
+    id: userProfile._id,
     name: userProfile.username,
     email: userProfile.email,
     photo: userProfile.photoProfile,
-    isAdmin:
-      (userProfile.isAdmin.toString() as BooleanEnum) === BooleanEnum.TRUE,
+    isAdmin:userProfile.isAdmin,
   }),
 };
 

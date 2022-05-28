@@ -1,11 +1,11 @@
 import { BooleanEnum } from './enum/Boolean';
 
 export type UserProfileRemoteData = {
-  id_user: string;
+  _id: string;
   username: string;
   email: string;
   photoProfile?: string;
-  isAdmin: BooleanEnum;
+  isAdmin: boolean;
 };
 
 export type UserProfile = {
