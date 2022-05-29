@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 
   const { data } = useRemoteUserProfile();
 
-  console.log('Data:', data);
+  console.log("data", data)
   return (
     <>
       <NextSeo
