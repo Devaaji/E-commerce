@@ -13,7 +13,8 @@ const useRemoteUserProfile = () => {
     state.removeUser,
   ]);
 
-  const uri = email ? `http://localhost:5000/api/auth/${email}` : null;
+  
+  const uri = email ? `https://api-ecommerce-depdep.herokuapp.com/auth/${email}` : null;
   const fetcher = async (url: any) => await axios.get(url).then((res) => res.data);
   const { data, error, ...others } = useSWR<GetUSerProfileResponse>(uri, fetcher);
 
