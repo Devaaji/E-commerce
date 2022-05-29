@@ -68,7 +68,7 @@ const LoginPage = () => {
         const { data: responseData } = response.data;
 
         setLogin(responseData.email, responseData.token);
-        mutate(`/auth/me?email=${data.email}`);
+        mutate(`/auth/${data.email}`);
         router.push('/');
       })
       .catch((error) => {

@@ -6,7 +6,7 @@ import { parseCookies } from 'nookies';
 import useUserStore from '../store/useUserStore';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://api-ecommerce-depdep.herokuapp.com/api/',
+    baseURL: 'http://localhost:5000/api/',
 });
 
 axiosInstance.interceptors.request.use((config) => {
