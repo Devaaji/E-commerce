@@ -10,8 +10,6 @@ const userProfileDataMapper: UserProfileDataMapperType = {
     id: userProfile._id,
     name: userProfile.username,
     email: userProfile.email,
-    photo: userProfile.photoProfile,
-    isAdmin:userProfile.isAdmin,
   }),
 };
 
