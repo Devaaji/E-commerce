@@ -7,8 +7,6 @@ const useNoAuth = () => {
 
   const { data } = useRemoteUserProfile();
 
-  console.log("New Data", data);
-
   useEffect(() => {
     if (data) router.replace('/');
   }, [data]);

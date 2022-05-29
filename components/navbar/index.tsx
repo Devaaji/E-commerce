@@ -15,8 +15,12 @@ import { FiSearch } from 'react-icons/fi';
 import NextLink from 'next/link';
 import NavbarCategoryButton from '../navbarcategorybutton';
 import MainNavbarCartButton from '../navbarcartbutton';
+import useRemoteUserProfile from '../../hooks/remote/useRemoteUserProfile';
+import MainNavbarUserButton from '../main/navbaruserbutton';
 
 const MainNavbar = () => {
+  const { data: userProfile } = useRemoteUserProfile();
+
   return (
     <Flex
       flexDirection={'column'}
@@ -53,27 +57,33 @@ const MainNavbar = () => {
           </InputGroup>
           <MainNavbarCartButton />
           <ButtonGroup>
-            <NextLink href="/login" passHref>
-              <Button
-                as="a"
-                variant={'ghost'}
-                color="e-second"
-                border={'1px'}
-                borderColor={'e-second'}
-              >
-                Masuk
-              </Button>
-            </NextLink>
-            <NextLink href="/signup" passHref>
-              <Button
-                as="a"
-                bg={'e-second'}
-                color="white"
-                _hover={{ bg: 'hover-second' }}
-              >
-                Daftar
-              </Button>
-            </NextLink>
+            {userProfile ? (
+              <MainNavbarUserButton />
+            ) : (
+              <>
+                <NextLink href="/login" passHref>
+                  <Button
+                    as="a"
+                    variant={'ghost'}
+                    color="e-second"
+                    border={'1px'}
+                    borderColor={'e-second'}
+                  >
+                    Masuk
+                  </Button>
+                </NextLink>
+                <NextLink href="/signup" passHref>
+                  <Button
+                    as="a"
+                    bg={'e-second'}
+                    color="white"
+                    _hover={{ bg: 'hover-second' }}
+                  >
+                    Daftar
+                  </Button>
+                </NextLink>
+              </>
+            )}
           </ButtonGroup>
         </HStack>
       </Flex>
