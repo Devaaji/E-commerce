@@ -14,7 +14,7 @@ const useRemoteUserProfile = () => {
   ]);
 
   
-  const uri = email ? `https://api-ecommerce-depdep.herokuapp.com/auth/${email}` : null;
+  const uri = email ? `https://api-ecommerce-depdep.herokuapp.com/api/auth/${email}` : null;
   const fetcher = async (url: any) => await axios.get(url).then((res) => res.data);
   const { data, error, ...others } = useSWR<GetUSerProfileResponse>(uri, fetcher);
 
