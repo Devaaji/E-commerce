@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 
 import useSWR from 'swr';
-import { fetcher } from '../../libs/axios';
 import useUserStore from '../../store/useUserStore';
 import { GetUSerProfileResponse } from '../../ts/UserProfile';
 import userProfileDataMapper from '../../utils/mapper/userProfileDataMapper';
@@ -15,7 +14,7 @@ const useRemoteUserProfile = () => {
 
   
   const uri = email ? `/auth/${email}` : null;
-  const { data, error, ...others } = useSWR<GetUSerProfileResponse>(uri, fetcher);
+  const { data, error, ...others } = useSWR<GetUSerProfileResponse>(uri);
 
   const newData = useMemo(
     () =>

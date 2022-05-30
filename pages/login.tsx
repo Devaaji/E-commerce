@@ -37,8 +37,9 @@ import { LoginSuccessResponse } from '../ts/types/Authentication';
 import useToastNetworkError from '../hooks/useToastNetworkError';
 import { useSWRConfig } from 'swr';
 import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
+import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
 
-const LoginPage = () => {
+const LoginPage: NextPageWithLayout = () => {
   useNoAuth();
   const { isOpen: isPasswordOpen, onToggle: onPasswordToggle } =
     useDisclosure();
@@ -77,13 +78,13 @@ const LoginPage = () => {
 
         if (error.response.status === 404) {
           setError('email', {});
-          setError('password', { message: 'Email atau password salah' });
+          setError('password', { message: 'Yakin itu benar? Coba diingat lagi.' });
         } else showToastNetworkError();
       });
   };
 
   return (
-    <MainLayout>
+    <>
       <NextSeo title="Login" titleTemplate="%s | E-Commerce" />
       <Flex minH={'80vh'} align={'center'} justify={'center'}>
         <LayoutImageAuth />
@@ -113,7 +114,7 @@ const LoginPage = () => {
                 <FormLabel>Email</FormLabel>
                 <Input
                   type="email"
-                  placeholder="user@email.com"
+                  placeholder="Mohon masukkan Email Anda"
                   {...register('email')}
                 />
                 <FormErrorMessage fontSize="xs">
@@ -127,6 +128,7 @@ const LoginPage = () => {
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
+                  placeholder="Mohon isi kata sandi Anda"
                     type={isPasswordOpen ? 'text' : 'password'}
                     {...register('password')}
                   />
@@ -206,9 +208,11 @@ const LoginPage = () => {
           </Box>
         </Stack>
       </Flex>
-    </MainLayout>
+    </>
   );
 };
+
+LoginPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
 
 export const getServerSideProps = getServerSidePropsWithNoAuth;
 

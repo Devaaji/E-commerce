@@ -79,7 +79,7 @@ const SignUpPage: NextPageWithLayout = () => {
 
   if (!isRegisterSuccess)
     return (
-      <MainLayout>
+      <>
         <NextSeo title="Daftar" titleTemplate="%s | E-Commerce" />
         <Flex minH={'80vh'} align={'center'} justify={'center'}>
           <LayoutImageAuth />
@@ -128,7 +128,7 @@ const SignUpPage: NextPageWithLayout = () => {
                   <Input
                     type="email"
                     {...register('email')}
-                    placeholder="email address"
+                    placeholder="Email address"
                   />
                   <FormErrorMessage fontSize="xs">
                     {errors.email?.message}
@@ -138,7 +138,7 @@ const SignUpPage: NextPageWithLayout = () => {
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
-                      placeholder="enter password"
+                      placeholder="Minimal 6 Karakter Huruf"
                       type={isPasswordOpen ? 'text' : 'password'}
                       {...register('password')}
                     />
@@ -209,67 +209,60 @@ const SignUpPage: NextPageWithLayout = () => {
             </Box>
           </Stack>
         </Flex>
-      </MainLayout>
+      </>
     );
 
   return (
     <>
-      <MainLayout>
-        <NextSeo title="Akun" titleTemplate="%s | Selamat Telah Terdaftar!" />
-        <Flex minH={'80vh'} align={'center'} justify={'center'}>
-          <LayoutImageAuth />
-          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-            <Box
-              w="400px"
-              bg={'white'}
-              boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
-              p={8}
-            >
-              <Stack spacing={4} color={'e-main'}>
-                <Center>
-                  <Circle mt={10} size="50px" bg="green" color="white">
-                    <BsFillCheckCircleFill size={40} />
-                  </Circle>
-                </Center>
+      <NextSeo title="Akun" titleTemplate="%s | Selamat Telah Terdaftar!" />
+      <Flex minH={'80vh'} align={'center'} justify={'center'}>
+        <LayoutImageAuth />
+        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Box
+            w="400px"
+            bg={'white'}
+            boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
+            p={8}
+          >
+            <Stack spacing={4} color={'e-main'}>
+              <Center>
+                <Circle mt={10} size="50px" bg="green" color="white">
+                  <BsFillCheckCircleFill size={40} />
+                </Circle>
+              </Center>
+              <Text m={5} align="center" fontWeight="bold" fontFamily="heading">
+                Akun Telah Terdaftar!
+              </Text>
+              <Center>
                 <Text
-                  m={5}
+                  mb={5}
+                  w="80%"
                   align="center"
-                  fontWeight="bold"
-                  fontFamily="heading"
+                  size="subtitle-small"
+                  fontFamily="body"
                 >
-                  Akun Telah Terdaftar!
+                  Akun yang tersebut telah terdaftar, masuk untuk Belanja di
+                  E-Commerce Depdep
                 </Text>
-                <Center>
-                  <Text
-                    mb={5}
-                    w="80%"
-                    align="center"
-                    size="subtitle-small"
-                    fontFamily="body"
+              </Center>
+              <Center mb={'10'}>
+                <NextLink href="/login">
+                  <Button
+                    bg="e-second"
+                    color="white"
+                    variant="solid-gradient"
+                    w="100%"
+                    mt={20}
+                    type="submit"
                   >
-                    Akun yang tersebut telah terdaftar, masuk untuk Belanja di
-                    E-Commerce Depdep
-                  </Text>
-                </Center>
-                <Center mb={'10'}>
-                  <NextLink href="/login">
-                    <Button
-                      bg="e-second"
-                      color="white"
-                      variant="solid-gradient"
-                      w="100%"
-                      mt={20}
-                      type="submit"
-                    >
-                      Masuk
-                    </Button>
-                  </NextLink>
-                </Center>
-              </Stack>
-            </Box>
-          </Stack>
-        </Flex>
-      </MainLayout>
+                    Masuk
+                  </Button>
+                </NextLink>
+              </Center>
+            </Stack>
+          </Box>
+        </Stack>
+      </Flex>
     </>
   );
 };

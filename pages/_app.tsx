@@ -3,16 +3,29 @@ import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import theme from '../theme';
+import { fetcher } from '../libs/axios';
+import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
+import { SWRConfig } from 'swr';
 
-function MyApp({ Component, pageProps }: AppProps) {
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout || ((page) => page);
+
+  const fallback = pageProps.fallback || {};
+
   return (
     <ChakraProvider theme={theme}>
-      <NextNProgress
-        color="#206562"
-        height={5}
-        options={{ showSpinner: false }}
-      />
-      <Component {...pageProps} />
+      <SWRConfig value={{ fetcher, fallback }}>
+        <NextNProgress
+          color="#206562"
+          height={5}
+          options={{ showSpinner: false }}
+        />
+        {getLayout(<Component {...pageProps} />)}
+      </SWRConfig>
     </ChakraProvider>
   );
 }

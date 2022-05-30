@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import useRemoteUserProfile from './remote/useRemoteUserProfile';
 
 const useNoAuth = () => {
