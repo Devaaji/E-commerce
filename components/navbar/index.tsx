@@ -11,12 +11,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { FiBell, FiSearch } from 'react-icons/fi';
 import NextLink from 'next/link';
 import NavbarCategoryButton from '../navbarcategorybutton';
 import MainNavbarCartButton from '../navbarcartbutton';
 import useRemoteUserProfile from '../../hooks/remote/useRemoteUserProfile';
 import MainNavbarUserButton from '../main/navbaruserbutton';
+import IconButtonWithBadge from '../core/iconbuttonwithbadge';
 
 const MainNavbar = () => {
   const { data: userProfile } = useRemoteUserProfile();
@@ -57,9 +58,19 @@ const MainNavbar = () => {
           </InputGroup>
           <MainNavbarCartButton />
           <ButtonGroup>
+            <HStack>
+            {userProfile && (
+              <IconButtonWithBadge
+                icon={<FiBell />}
+                label="Notifications"
+                badge={1}
+              />
+            )}
+            </HStack>
             {userProfile ? (
               <MainNavbarUserButton />
-            ) : (
+            ) 
+            : (
               <>
                 <NextLink href="/login" passHref>
                   <Button
