@@ -36,6 +36,7 @@ import useAxios from '../hooks/useAxios';
 import { LoginSuccessResponse } from '../ts/types/Authentication';
 import useToastNetworkError from '../hooks/useToastNetworkError';
 import { useSWRConfig } from 'swr';
+import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
 
 const LoginPage = () => {
   useNoAuth();
@@ -75,7 +76,7 @@ const LoginPage = () => {
         setIsLoading.off();
 
         if (error.response.status === 404) {
-          setError('email', { message: 'Email atau password salah' });
+          setError('email', {});
           setError('password', { message: 'Email atau password salah' });
         } else showToastNetworkError();
       });
@@ -208,5 +209,7 @@ const LoginPage = () => {
     </MainLayout>
   );
 };
+
+export const getServerSideProps = getServerSidePropsWithNoAuth;
 
 export default LoginPage;

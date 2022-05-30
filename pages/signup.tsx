@@ -38,6 +38,7 @@ import { SignUpFormValues } from '../ts/types/schema/authenticationSchema';
 import { signUpSchema } from '../utils/schema/authenticationSchema';
 import useAxios from '../hooks/useAxios';
 import MainLayout from '../components/layout';
+import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
 
 const SignUpPage: NextPageWithLayout = () => {
   useNoAuth();
@@ -274,5 +275,7 @@ const SignUpPage: NextPageWithLayout = () => {
 };
 
 SignUpPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+
+export const getServerSideProps = getServerSidePropsWithNoAuth;
 
 export default SignUpPage;

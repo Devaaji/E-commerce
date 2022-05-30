@@ -1,10 +1,10 @@
-import type { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import MainBannerCarousel from '../components/bannercarousel';
 import MainLayout from '../components/layout';
 import MainRecomendation from '../components/MainRecomendation';
+import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
