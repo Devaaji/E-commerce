@@ -27,7 +27,6 @@ const MainNavbar = () => {
 
   return (
     <Flex
-    border={'2px'}
       flexDirection={'column'}
       w={'full'}
       h="max-content"
