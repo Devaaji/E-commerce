@@ -30,7 +30,7 @@ const MainNavbar = () => {
     border={'2px'}
       flexDirection={'column'}
       w={'full'}
-      h="110px"
+      h="max-content"
       boxShadow={'0px 2px 10px rgba(0, 0, 0, 0.25)'}
     >
       <Flex bg={'#429C97'} color="white" p="5px" pt="10px">
@@ -38,7 +38,7 @@ const MainNavbar = () => {
           Welcome to E-commerce Depdep - Buka Senin-Sabtu, 10:00-18:00 WIB
         </Text>
       </Flex>
-      <Flex w={'full'} h={'full'} justifyContent="center" alignItems={'center'}>
+      <Flex w={'full'} h={'full'} p='10px' justifyContent="center" alignItems={'center'}>
         <HStack spacing={'10px'}>
           {responMobile && (
             <NextLink href="/" passHref>
@@ -50,7 +50,7 @@ const MainNavbar = () => {
             </NextLink>
           )}
           {responMobile && <NavbarCategoryButton />}
-          <InputGroup w={{ base: '100px', lg: '900px' }}>
+          <InputGroup w={{ base: 'full', lg: '900px' }}>
             <InputRightElement color="e-main" pointerEvents="none">
               <FiSearch />
             </InputRightElement>

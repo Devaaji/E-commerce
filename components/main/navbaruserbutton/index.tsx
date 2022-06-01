@@ -56,7 +56,6 @@ const MainNavbarUserButton = () => {
       >
         <Avatar src="" name={userProfileData?.data.name} w="10" h="10" />
       </MenuButton>
-      {canPopup && (
         <Portal>
           <MenuList borderColor="vocasia-neutral-8" color="black">
             <HStack m="3">
@@ -116,7 +115,6 @@ const MainNavbarUserButton = () => {
             </MenuItem>
           </MenuList>
         </Portal>
-      )}
     </Menu>
   );
 };
