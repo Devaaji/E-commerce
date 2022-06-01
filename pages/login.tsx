@@ -99,7 +99,7 @@ const LoginPage: NextPageWithLayout = () => {
           noValidate
         >
           <Box
-            w="400px"
+            w={{ base: "full", md: "400px" }}
             bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
             p={8}

@@ -18,7 +18,14 @@ import NextLink from 'next/link';
 import { useSWRConfig } from 'swr';
 import useRemoteUserProfile from '../../../hooks/remote/useRemoteUserProfile';
 import useUserStore from '../../../store/useUserStore';
-import { FiHeart, FiLogOut, FiMail, FiTruck, FiUsers } from 'react-icons/fi';
+import {
+  FiHeart,
+  FiLogOut,
+  FiMail,
+  FiSettings,
+  FiTruck,
+  FiUsers,
+} from 'react-icons/fi';
 
 const MainNavbarUserButton = () => {
   const { mutate } = useSWRConfig();
@@ -73,40 +80,36 @@ const MainNavbarUserButton = () => {
                     {userProfileData?.data.name}
                   </Text>
                 </HStack>
-                <Text
-                  color="gray.600"
-                  fontSize="sm"
-                  fontStyle="heading"
-                >
-                  {userProfileData?.data.email}
-                </Text>
+                  <Text color="gray.600" fontSize="sm" fontStyle="heading">
+                    {userProfileData?.data.email}
+                  </Text>
               </VStack>
             </HStack>
+            <NextLink href="/profile" passHref>
+              <MenuItem as="a" icon={<FiUsers />}>
+                Profil Pengguna
+              </MenuItem>
+            </NextLink>
             <NextLink href="/my-wishlist" passHref>
               <MenuItem as="a" icon={<FiHeart />}>
                 My Wishlist
               </MenuItem>
             </NextLink>
-            <NextLink href="/messages" passHref>
-              <MenuItem as="a" icon={<FiMail />}>
-                Pesan Saya
-              </MenuItem>
-            </NextLink>
             <NextLink href="/hitory-pay" passHref>
               <MenuItem as="a" icon={<FiTruck />}>
-                Riwayat Pembelian
+                Pembelian
               </MenuItem>
             </NextLink>
-            <NextLink href="/profile" passHref>
-              <MenuItem as="a" icon={<FiUsers />}>
-                Profil Pengguna
+            <NextLink href="/messages" passHref>
+              <MenuItem as="a" icon={<FiSettings />}>
+                Pengaturan
               </MenuItem>
             </NextLink>
             <MenuItem
               py="4"
               bg="gray.100"
               color="green.400"
-              icon={<FiLogOut color="green"/>}
+              icon={<FiLogOut color="green" />}
               onClick={onLogout}
             >
               Keluar

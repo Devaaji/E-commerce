@@ -1,4 +1,3 @@
-import { Box, Button } from '@chakra-ui/react';
 import React from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import IconButtonWithBadge from '../core/iconbuttonwithbadge';

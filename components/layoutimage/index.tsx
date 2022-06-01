@@ -5,7 +5,7 @@ import NextImage from '../nextimage';
 
 const LayoutImageAuth = () => {
   return (
-    <Flex w={'full'} justifyContent={'center'}>
+    <Flex w={'full'} justifyContent={'center'} display={{ base: 'none', md: 'none', lg: 'block'}}>
       <Box>
         <NextImage src={ImageSignup} alt="" />
       </Box>

@@ -10,11 +10,11 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <Flex flexDirection={'column'}>
+    <Box overflow={'hidden'}>
       <MainNavbar />
       <MainMain>{children}</MainMain>
       <MainFooter />
-    </Flex>
+    </Box>
   );
 };
 

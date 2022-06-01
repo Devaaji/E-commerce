@@ -93,7 +93,7 @@ const SignUpPage: NextPageWithLayout = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <Box
-              w="400px"
+              w={{ base: "full", md: "400px" }}
               bg={'white'}
               boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
               p={8}
@@ -219,7 +219,7 @@ const SignUpPage: NextPageWithLayout = () => {
         <LayoutImageAuth />
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Box
-            w="400px"
+            w={{ base: "380px", md: "400px" }}
             bg={'white'}
             boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
             p={8}

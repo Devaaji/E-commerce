@@ -9,9 +9,10 @@ import {
   InputRightElement,
   Link,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
-import { FiBell, FiSearch } from 'react-icons/fi';
+import { FiBell, FiMail, FiSearch } from 'react-icons/fi';
 import NextLink from 'next/link';
 import NavbarCategoryButton from '../navbarcategorybutton';
 import MainNavbarCartButton from '../navbarcartbutton';
@@ -22,8 +23,11 @@ import IconButtonWithBadge from '../core/iconbuttonwithbadge';
 const MainNavbar = () => {
   const { data: userProfile } = useRemoteUserProfile();
 
+  const responMobile = useBreakpointValue({ base: false, md: true });
+
   return (
     <Flex
+    border={'2px'}
       flexDirection={'column'}
       w={'full'}
       h="110px"
@@ -36,15 +40,17 @@ const MainNavbar = () => {
       </Flex>
       <Flex w={'full'} h={'full'} justifyContent="center" alignItems={'center'}>
         <HStack spacing={'10px'}>
-          <NextLink href="/" passHref>
-            <Link as="a">
-              <Text fontSize={'2xl'} fontWeight={'bold'}>
-                E-Commerce
-              </Text>
-            </Link>
-          </NextLink>
-          <NavbarCategoryButton />
-          <InputGroup w={'900px'}>
+          {responMobile && (
+            <NextLink href="/" passHref>
+              <Link as="a">
+                <Text fontSize={'2xl'} fontWeight={'bold'}>
+                  E-Commerce
+                </Text>
+              </Link>
+            </NextLink>
+          )}
+          {responMobile && <NavbarCategoryButton />}
+          <InputGroup w={{ base: '100px', lg: '900px' }}>
             <InputRightElement color="e-main" pointerEvents="none">
               <FiSearch />
             </InputRightElement>
@@ -59,18 +65,24 @@ const MainNavbar = () => {
           <MainNavbarCartButton />
           <ButtonGroup>
             <HStack>
-            {userProfile && (
-              <IconButtonWithBadge
-                icon={<FiBell />}
-                label="Notifications"
-                badge={1}
-              />
-            )}
+              {userProfile && (
+                <IconButtonWithBadge
+                  icon={<FiMail />}
+                  label="Notifications"
+                  badge={1}
+                />
+              )}
+              {userProfile && (
+                <IconButtonWithBadge
+                  icon={<FiBell />}
+                  label="Notifications"
+                  badge={1}
+                />
+              )}
             </HStack>
             {userProfile ? (
               <MainNavbarUserButton />
-            ) 
-            : (
+            ) : (
               <>
                 <NextLink href="/login" passHref>
                   <Button
