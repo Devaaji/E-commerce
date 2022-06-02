@@ -21,7 +21,6 @@ import useUserStore from '../../../store/useUserStore';
 import {
   FiHeart,
   FiLogOut,
-  FiMail,
   FiSettings,
   FiTruck,
   FiUsers,
@@ -37,8 +36,6 @@ const MainNavbarUserButton = () => {
     state.email,
     state.removeUser,
   ]);
-
-  const canPopup = useBreakpointValue({ base: false, md: true });
 
   const onLogout = () => {
     removeUserStore();
