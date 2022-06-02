@@ -13,7 +13,7 @@ const useRemoteUserProfile = () => {
   ]);
 
   
-  const uri = email ? `/auth/${email}` : null;
+  const uri = email ? `/auth/me?email=${email}` : null;
   const { data, error, ...others } = useSWR<GetUSerProfileResponse>(uri);
 
   const newData = useMemo(
