@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Flex, Image, Text } from '@chakra-ui/react';
+import { AspectRatio, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import Slider from 'react-slick';
 
@@ -123,12 +123,12 @@ const MainCard = () => {
     <>
       <Slider {...settings}>
         {Products.map((product) => (
-          <Box key={product.title}>
+          <Box key={product.title} >
             <Flex
-              border={'1px'}
+             border={'1px solid gray'}
+              bg={'white'}
               w={'189px'}
               direction={'column'}
-              h={'288px'}
               rounded={'10px'}
               overflow={'hidden'}
             >
@@ -149,15 +149,32 @@ const MainCard = () => {
                     {product.title}{' '}
                   </Text>
                 </Box>
-                <Box
-                  border={'1px'}
-                  maxW={'max-content'}
-                  px={'2px'}
-                  rounded={'5px'}
-                  color={'e-second'}
-                >
-                  <Text fontSize={'8px'}>Ready</Text>
-                </Box>
+                <HStack>
+                  <Box
+                    border={'1px'}
+                    my={'5px'}
+                    maxW={'max-content'}
+                    px={'3px'}
+                    rounded={'5px'}
+                    color={'e-second'}
+                  >
+                    <Text fontSize={'8px'} m="3px">
+                      Ready
+                    </Text>
+                  </Box>
+                  <Box
+                    border={'1px'}
+                    my={'5px'}
+                    maxW={'max-content'}
+                    px={'3px'}
+                    rounded={'5px'}
+                    color={'blue'}
+                  >
+                    <Text fontSize={'8px'} m="3px">
+                      Recommended
+                    </Text>
+                  </Box>
+                </HStack>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Box fontSize={'14px'}>
                     <Text color={'e-orange'} fontWeight={'semibold'}>
