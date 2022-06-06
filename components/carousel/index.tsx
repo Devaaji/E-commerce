@@ -6,11 +6,11 @@ const CarouselSlide = () => {
   const Images = [
     {
       name: 'Slide 1',
-      src: 'https://enterkomputer.com/web-assets/frontend/banner/home/Banner-Unboxing-2022-1646725795.jpg',
+      src: 'https://enterkomputer.com/web-assets/frontend/banner/home/Banner-Slider-Home-build-your-dream-1653717365.jpg',
     },
     {
       name: 'Slide 2',
-      src: 'https://enterkomputer.com/web-assets/frontend/banner/home/Banner-Slider-Home-Enterkomputer-1646103970.jpg',
+      src: 'https://enterkomputer.com/web-assets/frontend/banner/home/Banner-Slider-Home-VGA_1-1646103810.jpg',
     },
   ];
   return (

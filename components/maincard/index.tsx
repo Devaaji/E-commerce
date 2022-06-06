@@ -115,15 +115,15 @@ const MainCard = () => {
           slidesToShow: 2.1,
           slidesToScroll: 1,
           arrows: false,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
   return (
     <>
       <Slider {...settings}>
         {Products.map((product) => (
-          <>
+          <Box key={product.title}>
             <Flex
               border={'1px'}
               w={'189px'}
@@ -170,7 +170,7 @@ const MainCard = () => {
                 </Flex>
               </Box>
             </Flex>
-          </>
+          </Box>
         ))}
       </Slider>
     </>
