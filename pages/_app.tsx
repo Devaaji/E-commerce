@@ -8,6 +8,7 @@ import theme from '../theme';
 import { fetcher } from '../libs/axios';
 import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
 import { SWRConfig } from 'swr';
+import '../components/maincard/styles.css'
 
 
 type AppPropsWithLayout = AppProps & {
