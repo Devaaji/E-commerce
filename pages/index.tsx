@@ -22,6 +22,8 @@ const Home: NextPageWithLayout = () => {
       <MainLayout>
         <MainBannerCarousel />
         <MainRecomendation />
+        <MainRecomendation />
+        <MainRecomendation />
       </MainLayout>
     </>
   );

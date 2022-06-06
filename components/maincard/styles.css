@@ -1,0 +1,37 @@
+.nextArrow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 40%;
+    right: 0px;
+    z-index: 100;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    background-color: rgba(78, 74, 71, 0.589);
+  }
+
+  .nextArrow:hover {
+    color: #158A6E
+  }
+
+.prevArrow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 40%;
+    left: 0px;
+    z-index: 100;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    background-color: rgba(56, 51, 48, 0.589);
+  }
+
+  .prevArrow:hover {
+    color: #158A6E
+  }

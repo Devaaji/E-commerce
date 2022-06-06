@@ -1,10 +1,5 @@
-import {
-  AspectRatio,
-  Box,
-  Flex,
-  Image,
-  Text,
-} from '@chakra-ui/react';
+import { AspectRatio, Box, Flex, Image, Text } from '@chakra-ui/react';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import Slider from 'react-slick';
 
 const MainCard = () => {
@@ -88,54 +83,41 @@ const MainCard = () => {
     },
   ];
 
-  // function SampleNextArrow(props: any) {
-  //   const { onClick } = props;
-  //   return (
-  //     <div className="slick-next" style={{ background: "tomato", zIndex: 1, position: "absolute", }}  onClick={onClick}>
-  //     <BsChevronRight />
-  //   </div>
-  //   );
-  // }
+  function NextArrow(props: any) {
+    const { onClick } = props;
+    return (
+      <div className="nextArrow" onClick={onClick}>
+        <BsChevronRight />
+      </div>
+    );
+  }
+  function PrevArrow(props: any) {
+    const { onClick } = props;
+    return (
+      <div className="prevArrow" onClick={onClick}>
+        <BsChevronLeft />
+      </div>
+    );
+  }
 
   const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    dots: false,
-    speed: 300,
+    infinite: false,
+    speed: 500,
     slidesToShow: 6.5,
-    centerPadding: "0",
-    swipeToSlide: true,
-    focusOnSelect: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3.5,
-                    arrows: false,
-                    slidesToScroll: 3,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3.5,
-                    slidesToScroll: 2,
-                    arrows: false,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    infinite: false,
-                    slidesToShow: 2.6,
-                    speed: 220,
-                    arrows: false,
-                    slidesToScroll: 2
-                }
-            }
-        ]
+    slidesToScroll: 4,
+    initialSlide: 0,
+    nextArrow: <NextArrow onClick />,
+    prevArrow: <PrevArrow onClick />,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2.1,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
   };
   return (
     <>
@@ -193,7 +175,6 @@ const MainCard = () => {
       </Slider>
     </>
   );
-
 };
 
 export default MainCard;
