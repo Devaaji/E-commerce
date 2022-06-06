@@ -70,7 +70,7 @@ const LoginPage: NextPageWithLayout = () => {
         const { data: responseData } = response.data;
 
         setLogin(responseData.email, responseData.token);
-        mutate(`/auth/${data.email}`);
+        mutate(`/auth/me?email=${data.email}`);
         router.push('/');
       })
       .catch((error) => {
