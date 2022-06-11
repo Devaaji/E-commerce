@@ -20,7 +20,7 @@ import { BiCategory } from 'react-icons/bi';
 import { FiChevronRight } from 'react-icons/fi';
 
 const NavbarCategoryButton = () => {
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(-1);
+  const [, setSelectedCategoryIndex] = useState(-1);
   return (
     <Popover placement="bottom-start" trigger="hover">
       <PopoverTrigger>
