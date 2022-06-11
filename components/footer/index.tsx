@@ -1,12 +1,6 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Text,
-  VStack,
-  Wrap,
-} from '@chakra-ui/react';
 import React from 'react';
+
+import { Box, Container, Flex, Text, VStack, Wrap } from '@chakra-ui/react';
 import { MdLanguage, MdCalendarToday, MdCall, MdEmail } from 'react-icons/md';
 
 const MainFooter = () => {
@@ -130,7 +124,7 @@ const MainFooter = () => {
           </Box>
         </Wrap>
       </Container>
-      <Box borderTop="1px" mt="20px" pt='20px' textAlign={'center'}>
+      <Box borderTop="1px" mt="20px" pt="20px" textAlign={'center'}>
         <Text>&copy; 2022 Deva Aji Saputra. All Rights Reserved</Text>
       </Box>
     </Box>

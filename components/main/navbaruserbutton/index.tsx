@@ -1,6 +1,7 @@
+import React from 'react';
+
 import {
   Avatar,
-  Button,
   HStack,
   IconButton,
   Menu,
@@ -9,15 +10,10 @@ import {
   MenuList,
   Portal,
   Text,
-  useBreakpointValue,
   VStack,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import React from 'react';
 import NextLink from 'next/link';
-import { useSWRConfig } from 'swr';
-import useRemoteUserProfile from '../../../hooks/remote/useRemoteUserProfile';
-import useUserStore from '../../../store/useUserStore';
+import { useRouter } from 'next/router';
 import {
   FiHeart,
   FiLogOut,
@@ -25,6 +21,10 @@ import {
   FiTruck,
   FiUsers,
 } from 'react-icons/fi';
+import { useSWRConfig } from 'swr';
+
+import useRemoteUserProfile from '../../../hooks/remote/useRemoteUserProfile';
+import useUserStore from '../../../store/useUserStore';
 
 const MainNavbarUserButton = () => {
   const { mutate } = useSWRConfig();
@@ -53,65 +53,65 @@ const MainNavbarUserButton = () => {
       >
         <Avatar src="" name={userProfileData?.data.name} w="10" h="10" />
       </MenuButton>
-        <Portal>
-          <MenuList borderColor="vocasia-neutral-8" color="black">
-            <HStack m="3">
-              <Avatar src="" name={userProfileData?.data.name} w="10" h="10" />
-              <VStack alignItems="left">
-                <HStack>
-                  <Text
-                    fontSize="md"
-                    fontStyle="heading"
-                    color="black"
-                    fontWeight="bold"
-                  >
-                    Hai,
-                  </Text>
-                  <Text
-                    size="title-small"
-                    fontStyle="heading"
-                    color="black"
-                    fontWeight="bold"
-                  >
-                    {userProfileData?.data.name}
-                  </Text>
-                </HStack>
-                  <Text color="gray.600" fontSize="sm" fontStyle="heading">
-                    {userProfileData?.data.email}
-                  </Text>
-              </VStack>
-            </HStack>
-            <NextLink href="/profile" passHref>
-              <MenuItem as="a" icon={<FiUsers />}>
-                Profil Pengguna
-              </MenuItem>
-            </NextLink>
-            <NextLink href="/my-wishlist" passHref>
-              <MenuItem as="a" icon={<FiHeart />}>
-                My Wishlist
-              </MenuItem>
-            </NextLink>
-            <NextLink href="/hitory-pay" passHref>
-              <MenuItem as="a" icon={<FiTruck />}>
-                Pembelian
-              </MenuItem>
-            </NextLink>
-            <NextLink href="/messages" passHref>
-              <MenuItem as="a" icon={<FiSettings />}>
-                Pengaturan
-              </MenuItem>
-            </NextLink>
-            <MenuItem
-              py="4"
-              bg="gray.100"
-              color="green.400"
-              icon={<FiLogOut color="green" />}
-              onClick={onLogout}
-            >
-              Keluar
+      <Portal>
+        <MenuList borderColor="vocasia-neutral-8" color="black">
+          <HStack m="3">
+            <Avatar src="" name={userProfileData?.data.name} w="10" h="10" />
+            <VStack alignItems="left">
+              <HStack>
+                <Text
+                  fontSize="md"
+                  fontStyle="heading"
+                  color="black"
+                  fontWeight="bold"
+                >
+                  Hai,
+                </Text>
+                <Text
+                  size="title-small"
+                  fontStyle="heading"
+                  color="black"
+                  fontWeight="bold"
+                >
+                  {userProfileData?.data.name}
+                </Text>
+              </HStack>
+              <Text color="gray.600" fontSize="sm" fontStyle="heading">
+                {userProfileData?.data.email}
+              </Text>
+            </VStack>
+          </HStack>
+          <NextLink href="/profile" passHref>
+            <MenuItem as="a" icon={<FiUsers />}>
+              Profil Pengguna
             </MenuItem>
-          </MenuList>
-        </Portal>
+          </NextLink>
+          <NextLink href="/my-wishlist" passHref>
+            <MenuItem as="a" icon={<FiHeart />}>
+              My Wishlist
+            </MenuItem>
+          </NextLink>
+          <NextLink href="/hitory-pay" passHref>
+            <MenuItem as="a" icon={<FiTruck />}>
+              Pembelian
+            </MenuItem>
+          </NextLink>
+          <NextLink href="/messages" passHref>
+            <MenuItem as="a" icon={<FiSettings />}>
+              Pengaturan
+            </MenuItem>
+          </NextLink>
+          <MenuItem
+            py="4"
+            bg="gray.100"
+            color="green.400"
+            icon={<FiLogOut color="green" />}
+            onClick={onLogout}
+          >
+            Keluar
+          </MenuItem>
+        </MenuList>
+      </Portal>
     </Menu>
   );
 };

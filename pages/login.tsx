@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Flex,
   Box,
@@ -18,26 +20,27 @@ import {
   useBoolean,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { NextSeo } from 'next-seo';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { ImFacebook } from 'react-icons/im';
-import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
-import { NextSeo } from 'next-seo';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter } from 'next/router';
+import { useSWRConfig } from 'swr';
+
 import MainLayout from '../components/layout';
 import LayoutImageAuth from '../components/layoutimage';
-import useNoAuth from '../hooks/useNoAuth';
-import useUserStore from '../store/useUserStore';
-import { LoginFormValues } from '../ts/types/schema/authenticationSchema';
-import { loginSchema } from '../utils/schema/authenticationSchema';
 import useAxios from '../hooks/useAxios';
-import { LoginSuccessResponse } from '../ts/types/Authentication';
+import useNoAuth from '../hooks/useNoAuth';
 import useToastNetworkError from '../hooks/useToastNetworkError';
-import { useSWRConfig } from 'swr';
-import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
+import useUserStore from '../store/useUserStore';
+import { LoginSuccessResponse } from '../ts/types/Authentication';
 import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
+import { LoginFormValues } from '../ts/types/schema/authenticationSchema';
+import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
+import { loginSchema } from '../utils/schema/authenticationSchema';
 
 const LoginPage: NextPageWithLayout = () => {
   useNoAuth();
@@ -78,13 +81,15 @@ const LoginPage: NextPageWithLayout = () => {
 
         if (error.response.status === 404) {
           setError('email', {});
-          setError('password', { message: 'Yakin itu benar? Coba diingat lagi.' });
+          setError('password', {
+            message: 'Yakin itu benar? Coba diingat lagi.',
+          });
         } else showToastNetworkError();
       });
   };
 
   return (
-    <>
+    <React.Fragment>
       <NextSeo title="Login" titleTemplate="%s | E-Commerce" />
       <Flex minH={'80vh'} align={'center'} justify={'center'}>
         <LayoutImageAuth />
@@ -99,7 +104,7 @@ const LoginPage: NextPageWithLayout = () => {
           noValidate
         >
           <Box
-            w={{ base: "full", md: "400px" }}
+            w={{ base: 'full', md: '400px' }}
             bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
             p={8}
@@ -128,7 +133,7 @@ const LoginPage: NextPageWithLayout = () => {
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
-                  placeholder="Mohon isi kata sandi Anda"
+                    placeholder="Mohon isi kata sandi Anda"
                     type={isPasswordOpen ? 'text' : 'password'}
                     {...register('password')}
                   />
@@ -181,16 +186,15 @@ const LoginPage: NextPageWithLayout = () => {
                   <Text fontWeight={'semibold'}>Atau</Text>
                 </Box>
                 <VStack spacing="4">
-                  <NextLink href="/login-google" passHref>
-                    <Button
-                      border={'1px'}
-                      variant="outline-text"
-                      leftIcon={<Icon as={FcGoogle} fontSize="xl" />}
-                      isFullWidth
-                    >
-                      Lanjutkan dengan Google
-                    </Button>
-                  </NextLink>
+                  <Button
+                    border={'1px'}
+                    variant="outline-text"
+                    onClick={() => {}}
+                    leftIcon={<Icon as={FcGoogle} fontSize="xl" />}
+                    isFullWidth
+                  >
+                    Lanjutkan dengan Google
+                  </Button>
                   <NextLink href="/login-facebook" passHref>
                     <Button
                       bg={'#045FE7'}
@@ -208,7 +212,7 @@ const LoginPage: NextPageWithLayout = () => {
           </Box>
         </Stack>
       </Flex>
-    </>
+    </React.Fragment>
   );
 };
 

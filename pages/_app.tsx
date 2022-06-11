@@ -2,14 +2,16 @@ import '../styles/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import theme from '../theme';
-import { fetcher } from '../libs/axios';
-import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
-import { SWRConfig } from 'swr';
-import '../components/maincard/styles.css'
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { SWRConfig } from 'swr';
+
+import { fetcher } from '../libs/axios';
+import theme from '../theme';
+import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
+
+import '../components/maincard/styles.css';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;

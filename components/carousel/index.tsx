@@ -1,5 +1,6 @@
-import { Box, Image } from '@chakra-ui/react';
 import React from 'react';
+
+import { Box, Image } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 
 const CarouselSlide = () => {

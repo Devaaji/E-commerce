@@ -1,5 +1,6 @@
-import { Box, Container, Flex } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
+
+import { Container } from '@chakra-ui/react';
 
 type MainMainProps = {
   children: ReactNode;

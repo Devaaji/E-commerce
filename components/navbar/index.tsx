@@ -1,5 +1,6 @@
+import React from 'react';
+
 import {
-  Box,
   Button,
   ButtonGroup,
   Flex,
@@ -11,14 +12,14 @@ import {
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
-import { FiBell, FiMail, FiSearch } from 'react-icons/fi';
 import NextLink from 'next/link';
-import NavbarCategoryButton from '../navbarcategorybutton';
-import MainNavbarCartButton from '../navbarcartbutton';
+import { FiBell, FiMail, FiSearch } from 'react-icons/fi';
+
 import useRemoteUserProfile from '../../hooks/remote/useRemoteUserProfile';
-import MainNavbarUserButton from '../main/navbaruserbutton';
 import IconButtonWithBadge from '../core/iconbuttonwithbadge';
+import MainNavbarUserButton from '../main/navbaruserbutton';
+import MainNavbarCartButton from '../navbarcartbutton';
+import NavbarCategoryButton from '../navbarcategorybutton';
 
 const MainNavbar = () => {
   const { data: userProfile } = useRemoteUserProfile();
@@ -37,7 +38,13 @@ const MainNavbar = () => {
           Welcome to E-commerce Depdep - Buka Senin-Sabtu, 10:00-18:00 WIB
         </Text>
       </Flex>
-      <Flex w={'full'} h={'full'} p='10px' justifyContent="center" alignItems={'center'}>
+      <Flex
+        w={'full'}
+        h={'full'}
+        p="10px"
+        justifyContent="center"
+        alignItems={'center'}
+      >
         <HStack spacing={'10px'}>
           {responMobile && (
             <NextLink href="/" passHref>

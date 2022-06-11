@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "next lint --fix"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.15",
@@ -19,11 +20,13 @@
     "firebase": "^9.6.10",
     "framer-motion": "^6.2.8",
     "next": "12.1.4",
+    "next-auth": "^4.3.4",
     "next-seo": "^5.3.0",
     "nextjs-progressbar": "0.0.14",
     "nookies": "^2.5.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-google-login": "^5.2.2",
     "react-hook-form": "^7.31.2",
     "react-icons": "^4.3.1",
     "react-id-swiper": "^4.0.0",

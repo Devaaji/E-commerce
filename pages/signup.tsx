@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Flex,
   Box,
@@ -20,25 +22,26 @@ import {
   Circle,
   useToast,
 } from '@chakra-ui/react';
-import { NextSeo } from 'next-seo';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { NextSeo } from 'next-seo';
 import NextLink from 'next/link';
-import { FcGoogle } from 'react-icons/fc';
-import { ImFacebook } from 'react-icons/im';
+import { useForm, SubmitHandler, useFormState } from 'react-hook-form';
 import {
   BsFillCheckCircleFill,
   BsFillEyeFill,
   BsFillEyeSlashFill,
 } from 'react-icons/bs';
-import { useForm, SubmitHandler, useFormState } from 'react-hook-form';
+import { FcGoogle } from 'react-icons/fc';
+import { ImFacebook } from 'react-icons/im';
+
+import MainLayout from '../components/layout';
 import LayoutImageAuth from '../components/layoutimage';
+import useAxios from '../hooks/useAxios';
 import useNoAuth from '../hooks/useNoAuth';
 import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
 import { SignUpFormValues } from '../ts/types/schema/authenticationSchema';
-import { signUpSchema } from '../utils/schema/authenticationSchema';
-import useAxios from '../hooks/useAxios';
-import MainLayout from '../components/layout';
 import { getServerSidePropsWithNoAuth } from '../utils/getServerSidePropsWithNoAuth';
+import { signUpSchema } from '../utils/schema/authenticationSchema';
 
 const SignUpPage: NextPageWithLayout = () => {
   useNoAuth();
@@ -79,7 +82,7 @@ const SignUpPage: NextPageWithLayout = () => {
 
   if (!isRegisterSuccess)
     return (
-      <>
+      <React.Fragment>
         <NextSeo title="Daftar" titleTemplate="%s | E-Commerce" />
         <Flex minH={'80vh'} align={'center'} justify={'center'}>
           <LayoutImageAuth />
@@ -93,7 +96,7 @@ const SignUpPage: NextPageWithLayout = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <Box
-              w={{ base: "full", md: "400px" }}
+              w={{ base: 'full', md: '400px' }}
               bg={'white'}
               boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
               p={8}
@@ -209,7 +212,7 @@ const SignUpPage: NextPageWithLayout = () => {
             </Box>
           </Stack>
         </Flex>
-      </>
+      </React.Fragment>
     );
 
   return (
@@ -219,7 +222,7 @@ const SignUpPage: NextPageWithLayout = () => {
         <LayoutImageAuth />
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Box
-            w={{ base: "380px", md: "400px" }}
+            w={{ base: '380px', md: '400px' }}
             bg={'white'}
             boxShadow={'0px 0px 3px 3px rgba(0, 0, 0, 0.25)'}
             p={8}

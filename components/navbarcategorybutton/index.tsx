@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   Box,
   Button,
@@ -14,7 +16,6 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 import { BiCategory } from 'react-icons/bi';
 import { FiChevronRight } from 'react-icons/fi';
 

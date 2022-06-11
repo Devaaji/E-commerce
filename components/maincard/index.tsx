@@ -123,9 +123,9 @@ const MainCard = () => {
     <>
       <Slider {...settings}>
         {Products.map((product) => (
-          <Box key={product.title} >
+          <Box key={product.title}>
             <Flex
-             border={'1px solid gray'}
+              border={'1px solid gray'}
               bg={'white'}
               w={'189px'}
               direction={'column'}

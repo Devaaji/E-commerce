@@ -1,5 +1,7 @@
-import { Box, Container, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
+
+import { Box, Container, Flex, Text } from '@chakra-ui/react';
+
 import MainCard from '../maincard';
 
 const MainRecomendation = () => {

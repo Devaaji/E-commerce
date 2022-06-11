@@ -1,4 +1,7 @@
+import React from 'react';
+
 import { NextSeo } from 'next-seo';
+
 import MainBannerCarousel from '../components/bannercarousel';
 import MainLayout from '../components/layout';
 import MainRecomendation from '../components/MainRecomendation';
@@ -6,7 +9,7 @@ import { NextPageWithLayout } from '../ts/types/NextPageWithLayout';
 
 const Home: NextPageWithLayout = () => {
   return (
-    <>
+    <React.Fragment>
       <NextSeo
         title="Toko Komputer "
         titleTemplate="%s | Depdep"
@@ -25,7 +28,7 @@ const Home: NextPageWithLayout = () => {
         <MainRecomendation />
         <MainRecomendation />
       </MainLayout>
-    </>
+    </React.Fragment>
   );
 };
 
